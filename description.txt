@@ -17,3 +17,8 @@
 - npm install @babel/preset-env @babel/node --save-dev 
 - preset은 바벨의 플러그인이다. 
 - babel-node가 최신 자바스크립트 문법 코드로 index.js를 실행시켜준다.
+
+### Express
+- 서버는 24시간 내내 온라인에 연결된 컴퓨터라고 할수있다. (request를 listening하고 있다.)
+- callback은 서버가 시작될때 작동하는 함수다. 
+- port는 컴퓨터의 문과 같다. 
