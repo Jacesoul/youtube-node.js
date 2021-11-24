@@ -16,6 +16,4 @@
 - nodeJS를 위한 바벨 사용하기(npm i --save-dev @babel/core)
 - npm install @babel/preset-env @babel/node --save-dev 
 - preset은 바벨의 플러그인이다. 
-- babel-node가 최신 자바스크립트를 컴파일해준다. 
-
-
+- babel-node가 최신 자바스크립트 문법 코드로 index.js를 실행시켜준다.
