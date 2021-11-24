@@ -14,6 +14,8 @@
 - nodeJS가 이해하지 못하는 최신 자바스크립트 코드가 있다. 
 - 바벨은 우리가 작성한 최신 자바스크립트를 컴파일해준다. 
 - nodeJS를 위한 바벨 사용하기(npm i --save-dev @babel/core)
-- npm install @babel/preset-env --save-dev 
+- npm install @babel/preset-env @babel/node --save-dev 
 - preset은 바벨의 플러그인이다. 
+- babel-node가 최신 자바스크립트를 컴파일해준다. 
+
 
