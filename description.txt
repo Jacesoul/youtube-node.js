@@ -54,4 +54,5 @@
 - 모든 파일은 모듈이고, 거품과도 같다. 
 - import하기 위해서는 먼저 export를 해야한다. 
 - 하나의 파일 안에 있는 모든건 다른 파일로 부터 완전히 private 상태이다. 
-- default export를 하면 import를 할때 이름을 바꿀수있다. 
+- default export를 하면 import를 할때 원하는 이름으로 바꿀수있다. 
+- 파일은 한가지 default export 밖에 가질수없다.   
