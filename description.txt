@@ -25,3 +25,6 @@
 - GET은 HTTP method이다. 
 - HTTP는 서버가 소통하는 방법이다. 
 - GET은 "저 페이지를 갖다줘" 라는 의미이다. 
+- GET Request를 Response할 서버가 필요하다. 
+- express에서 route handler에는 addEventListener처럼 event는 없지만 request, response object가 있다.
+- resquest를 받으면 response를 return해야한다. res.end() / res.send("I still love you.")
