@@ -46,3 +46,5 @@
 - middleware가 next() 호출하지 않으면 다음 함수들은 실행되지 않는다. 
 - 관습적으로 응답을 해주는 마지막 controller에는 next를 쓰지 않는다. 
 - middleware를 global하게 쓰려면 맨위에 있어야한다. 
+- npm i morgan (HTTP logger)
+- morgan함수는 middleware를 리턴해준다. 
