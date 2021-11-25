@@ -4,14 +4,23 @@ const PORT = 4000;
 
 const app = express();
 
-const handleHome = (req, res) => {
-  return res.send("I still love you.");
-};
-const handleLogin = (req, res) => {
-  return res.send("Login here.");
+const gossipMiddleware = (req, res, next) => {
+  console.log(`Someone is going to : ${req.url}`);
+  return res.send("intercept! ");
+  next();
 };
 
-app.get("/", handleHome);
+// handleHome함수는 마지막에 호출되기 때문에 final middleware라고 할수 있다.
+const handleHome = (req, res) => {
+  console.log("final middleware!");
+  return res.end();
+};
+
+const handleLogin = (req, res) => {
+  return res.send({ message: "Login here." });
+};
+
+app.get("/", gossipMiddleware, handleHome);
 app.get("/login", handleLogin);
 
 const handleListening = () =>

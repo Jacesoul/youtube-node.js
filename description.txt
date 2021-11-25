@@ -28,3 +28,11 @@
 - GET Request를 Response할 서버가 필요하다. 
 - express에서 route handler에는 addEventListener처럼 event는 없지만 request, response object가 있다.
 - resquest를 받으면 response를 return해야한다. res.end() / res.send("I still love you.")
+
+### middleware
+- middleware는 request와 response의 사이에 있다. 
+- 모든 controller(handler)는 middleware이고 모든 middleware는 controller(handler)이다. 
+- next argument는 다음 함수를 호출해준다. 
+- app.get에서 get은 path를 필요로한다. path는 URL이고 handler에는 다수의 handler를 사용할수 있다. 
+- handler는 middleware가 될수 있다. 
+- middleware는 작업을 다음 함수에게 넘기는 함수이다. 
