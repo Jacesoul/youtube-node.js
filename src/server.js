@@ -4,40 +4,24 @@ const PORT = 4000;
 
 const app = express();
 
-const logger = (req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
+const routerLogger = (req, res, next) => {
+  console.log("PATH", req.path);
   next();
 };
-
-const privateMiddleware = (req, res, next) => {
-  const url = req.url;
-  if (url === "/protected") {
-    return res.send("<h1>Not allowed</h1>");
-  }
-  console.log("Allowed, you may continue");
+const methodLogger = (req, res, next) => {
+  console.log("METHOD", req.method);
   next();
 };
-
-// handleHome함수는 마지막에 호출되기 때문에 final middleware라고 할수 있다.
-const handleHome = (req, res) => {
-  console.log("I love middleware!");
-  return res.end();
+const home = (req, res) => {
+  console.log("I will respond.");
+  return res.send("hello");
 };
-
-const handleLogin = (req, res) => {
-  return res.send({ message: "Login here." });
+const login = (req, res) => {
+  return res.send("login");
 };
-
-const handleProtected = (req, res) => {
-  return res.send("Welcome to the private lounge.");
-};
-
-app.use(logger);
-app.use(privateMiddleware);
-app.get("/", handleHome);
-app.get("/protected", handleProtected);
-
-app.get("/login", handleLogin);
+app.use(routerLogger, methodLogger);
+app.get("/", home);
+app.get("/login", login);
 
 const handleListening = () =>
   console.log(`✅ Server listening on port http://localhost:${PORT}/ 🚀`);

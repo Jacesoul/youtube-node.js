@@ -8,6 +8,7 @@
 - package.json은 텍스트 파일이기 때문에 내용을 수정하고 저장해도 문제가 되지 않는다. 이미 모든게 node_modules폴더에 설치되어있다. 
 - devDependencies는 개발자에게 필요한 dependencies이다.
 - dependencies는 프로젝트가 필요한 패키지이고 devDependencies는 개발자에게 필요한 패키지다. 
+- 자동차에 비유한다면 자동차의 연료는 dependencies이고 차에서 음악을 들을수 있게 하는건 devDependencies이다. 
 
 ### Babel 
 - 바벨은 자바스크립트 컴파일러이다.
@@ -17,6 +18,7 @@
 - npm install @babel/preset-env @babel/node --save-dev 
 - preset은 바벨의 플러그인이다. 
 - babel-node가 최신 자바스크립트 문법 코드로 index.js를 실행시켜준다.
+- babel-node를 사용하기 위해 babel.config.json파일을 생성해서 babel에 추가하고 싶은 플러그인을 넣는다. 
 
 ### Express
 - 서버는 24시간 내내 온라인에 연결된 컴퓨터라고 할수있다. (request를 listening하고 있다.)
@@ -30,12 +32,17 @@
 - resquest를 받으면 response를 return해야한다. res.end() / res.send("I still love you.")
 
 ### middleware
+- middleware는 중간(middle)에 있는 software다. 
+- 결국 모든것이 middleware이다. 
 - middleware는 request와 response의 사이에 있다. 
 - 모든 controller(handler)는 middleware이고 모든 middleware는 controller(handler)이다. 
 - next argument는 다음 함수를 호출해준다. 
 - app.get에서 get은 path를 필요로한다. path는 URL이고 handler에는 다수의 handler를 사용할수 있다. 
+- app.get의 2번째 인자에는 함수가 들어가야한다.
 - handler는 middleware가 될수 있다. 
 - middleware는 작업을 다음 함수에게 넘기는 함수이다. 
 - app.use()는 global middleware를 만들수 있게 해준다. (순서가 매우 중요!)
 - app.use()에 middleware를 두면 모든 route에 적용된다. 
 - middleware가 next() 호출하지 않으면 다음 함수들은 실행되지 않는다. 
+- 관습적으로 응답을 해주는 마지막 controller에는 next를 쓰지 않는다. 
+- middleware를 global하게 쓰려면 맨위에 있어야한다. 
