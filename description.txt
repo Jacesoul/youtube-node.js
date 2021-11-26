@@ -68,3 +68,7 @@
 - pug가 파일을 렌더링해서 평범한 html로 변환해준다. 
 - cwd(current working directory)는 package.json에서 node.js를 실행하고 있는 장소가 된다. 
 - 뷰엔진은 process.cwd() + "/views"에서 작동한다. 
+- app.set("views", process.cwd() + "/src/views");
+- pug파일안에 자바스크립트 코드를 넣을수 있다. #{}
+- pug는 watch.pug에 있는 코드를 받아서 모든걸 체크하고 자바스크립트를 실행한다. 그리고 그것을 유저에게 제공한다. 이것을 렌더링이라고 함. 
+- partials폴더를 만들어서 반복되는 html 문서를 include할수있다. 
