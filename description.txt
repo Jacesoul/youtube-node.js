@@ -76,3 +76,6 @@
 - block을 통해서 필요한 부분에 내용을 넣을수 있다. 
 - block은 확장한 템플릿 안에 내용을 넣을 수 있는 창문 또는 문과 같다. 
 - res.render()에서 1번째 인자는 받을 파일 이름이고 2번째인자는 pug파일에서 받는 변수이다. 
+- 조금더 이쁜 CSS를 위해 MVP CSS 임포트하기 (임시방편)
+- <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+
