@@ -59,3 +59,12 @@
 - /:id는 pathparameter이다. 
 - /upload가 /:id보다 위에 있어야 하는이유는 :id자리에 upload가 오면 id로 인식한다.  
 - 정규식은 문자열로부터 특정정보를 추출하내는 방법이다. 
+
+### PUG
+- Pug는 템플릿 엔진이다. 
+- npm i pug
+- 뷰엔진 셋팅 app.set("view engine", "pug");
+- views 폴더 생성
+- pug가 파일을 렌더링해서 평범한 html로 변환해준다. 
+- cwd(current working directory)는 package.json에서 node.js를 실행하고 있는 장소가 된다. 
+- 뷰엔진은 process.cwd() + "/views"에서 작동한다. 
