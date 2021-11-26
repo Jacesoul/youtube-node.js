@@ -80,3 +80,4 @@
 - <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 - h1=pageTitle은 h1 #{pageTitle}과 같다. 
 - h1태그에 하나의 variable 값만 넣는 경우라면 h1=pageTitle로 하면 된다. 
+- mixin은 데이터를 받을수 있는 partial을 말한다. 
