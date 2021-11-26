@@ -78,4 +78,5 @@
 - res.render()에서 1번째 인자는 받을 파일 이름이고 2번째인자는 pug파일에서 받는 변수이다. 
 - 조금더 이쁜 CSS를 위해 MVP CSS 임포트하기 (임시방편)
 - <link rel="stylesheet" href="https://unpkg.com/mvp.css">
-
+- h1=pageTitle은 h1 #{pageTitle}과 같다. 
+- h1태그에 하나의 variable 값만 넣는 경우라면 h1=pageTitle로 하면 된다. 
