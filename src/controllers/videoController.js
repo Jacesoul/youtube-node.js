@@ -1,12 +1,20 @@
 import Video from "../models/Video";
 
-export const home = (req, res) => {
-  console.log("Starting Search");
+export const home = async (req, res) => {
+  /* callback을 쓰는 경우
   Video.find({}, (err, videos) => {
-    console.log("Search Finished");
+    if(error){
+      return res.render("server-error");
+    }
     return res.render("home", { pageTitle: "HOME", videos: [] });
   });
-  console.log("I finished first");
+  */
+  try {
+    const videos = await Video.find({});
+    return res.render("home", { pageTitle: "Home", videos });
+  } catch {
+    return res.render("server-error");
+  }
 };
 export const watch = (req, res) => {
   const { id } = req.params; // const id = req.params.id와 같다.
