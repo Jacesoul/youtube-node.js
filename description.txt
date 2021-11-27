@@ -93,6 +93,9 @@
 - express.urlencoded()의 옵션중 extended는 body에 있는 정보들을 보기 좋게 형식을 갖춰주는 일을 한다. 
 - server.js에서 routes를 사용하기 전에 express.urlencoded() middleware를 사용해야한다. 
 - express application이 form의 value들을 이해할수 있도록 하고 우리가 쓸수 있는 멋진 자바스크립트 형식으로 변형시켜준다. 
+- req.body는 form에 있는 value의 javascript representation이다.    
+- input태그에서 name을 명시해줘야 req.body를 받을수있다. 
+- controller 생성 -> router 생성(해당 컨트롤러 사용) 
 
-### Database
+### Database(mongoDB, mongoose)
 - 
