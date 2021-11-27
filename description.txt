@@ -98,4 +98,18 @@
 - controller 생성 -> router 생성(해당 컨트롤러 사용) 
 
 ### Database(mongoDB, mongoose)
-- 
+- mongoDB는 document-based(문서기반)이다. 
+- 일반적인 데이터베이스는 sql-based이다.(엑셀같은 행기반)
+- mongoDB에서 저장하는 것들은 JSON-like-document이다. 
+- mongoDB macOS 설치방법
+```bash
+install mongoDB Community Edition
+xcode-select --install
+brew tap mongodb/brew
+brew install mongodb-commnunity@4.4
+brew services start mongodb-commnunity@4.4
+```
+- mongoose는 node.js와 mongoDB를 이어주는 다리가 된다. 
+- mongoDB가 잘설치되었는지 확인하기 위해 터미널에서 mongo입력후 show dbs
+- npm i mongoose
+- server.js에 db.js를 import를 하면 mongoDB와 연결을 할수있다. 
