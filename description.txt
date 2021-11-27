@@ -113,3 +113,6 @@ brew services start mongodb-commnunity@4.4
 - mongoDB가 잘설치되었는지 확인하기 위해 터미널에서 mongo입력후 show dbs
 - npm i mongoose
 - server.js에 db.js를 import를 하면 mongoDB와 연결을 할수있다. 
+- database가 알아야 할것은 데이터가 어떻게 생겼는가이다. 
+- model을 생성하기 전에 먼저 model의 형태(schema)를 정의해줘야한다. 
+- db를 mongoose와 연결시켜서 video model을 인식시킨다. 
