@@ -84,8 +84,15 @@
 - #{} 방식은 attribute(href,class,id)에는 적용할수없다. (백틱사용하기 자바스크립트 template literal)
 - href의 앞머리 부분에 /를 넣으면 어디에 있든 상관없이 root경로 + /으로 가게 되어있다. (absolute url)
 - 그러나 /를 지우면 relative url이 된다. 
+
+### Parameter
 - GET 방식은 구글이나 네이버에서 뭔가를 검색할때 그 검색어가 주소창에 포함되어 있다. 
 - POST 방식은 파일을 보내거나, database에 있는 값을 바꾸는 뭔가를 보낼때 사용한다. 
+- res.redicrect()는 브라우저가 redicrect(자동으로 이동)하도록 한다. 
+- express.urlencoded()을 사용하면 form의 body를 이해할수있다. 
+- express.urlencoded()의 옵션중 extended는 body에 있는 정보들을 보기 좋게 형식을 갖춰주는 일을 한다. 
+- server.js에서 routes를 사용하기 전에 express.urlencoded() middleware를 사용해야한다. 
+- express application이 form의 value들을 이해할수 있도록 하고 우리가 쓸수 있는 멋진 자바스크립트 형식으로 변형시켜준다. 
 
 ### Database
 - 
