@@ -139,3 +139,4 @@ brew services start mongodb-commnunity@4.4
 - video.save()에서 save는 promise를 return 해주는데 이 말은 save 작업이 끝날때까지 기다려줘야한다. 
 - save는 promise를 return하고 이걸 await하면 document가 return 된다. 
 - collections는 document들의 묶음이다. 
+- minlength와 maxlength는 HTML input 태그에서도 할수 있지만 해커들이 HTML 요소를 삭제해서 접근을 할수 있기 때문에 database에서 validation을 해야 보호 받을수 있다. 
