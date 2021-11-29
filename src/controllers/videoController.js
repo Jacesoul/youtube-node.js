@@ -17,9 +17,10 @@ export const home = async (req, res) => {
     return res.render("server-error");
   }
 };
-export const watch = (req, res) => {
+export const watch = async (req, res) => {
   const { id } = req.params; // const id = req.params.id와 같다.
-  return res.render("watch", { pageTitle: `Watching` });
+  const video = await Video.findById(id);
+  return res.render("watch", { pageTitle: video.title, video });
 };
 export const getEdit = (req, res) => {
   const { id } = req.params;
