@@ -141,3 +141,4 @@ brew services start mongodb-commnunity@4.4
 - collections는 document들의 묶음이다. 
 - minlength와 maxlength는 HTML input 태그에서도 할수 있지만 해커들이 HTML 요소를 삭제해서 접근을 할수 있기 때문에 database에서 validation을 해야 보호 받을수 있다. 
 - 에러체크를 먼저하면 나머지 코드는 에러를 걱정할필요가 없게된다. 
+- mongoose 미들웨어를 만들때 무조건 model이 생성되기 전에 만들어야한다. 
