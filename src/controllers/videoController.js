@@ -36,29 +36,31 @@ export const getUpload = (req, res) => {
 };
 export const postUpload = async (req, res) => {
   const { title, description, hashtags } = req.body;
-  /* create메소드로 같은 기능을 할수 있다. 
-  await Video.create({
-    title,
-    description,
-    createdAt: Date.now(),
-    hashtags: hashtags.split(",").map((word) => `#${word}`),
-    meta: {
-      views: 0,
-      rating: 0,
-    },
-  });
-  */
-  const video = new Video({
-    title,
-    description,
-    createdAt: Date.now(),
-    hashtags: hashtags.split(",").map((word) => `#${word}`),
-    meta: {
-      views: 0,
-      rating: 0,
-    },
-  });
-  // database에 기록되고 저장되는데에는 시간이 걸리기 때문에 기다려줘야한다.
-  await video.save();
-  return res.redirect("/");
+  try {
+    /* create메소드로 같은 기능을 할수 있다. 
+    await Video.create({
+      title,
+      description,
+      createdAt: Date.now(),
+      hashtags: hashtags.split(",").map((word) => `#${word}`),
+      meta: {
+        views: 0,
+        rating: 0,
+      },
+    });
+    */
+    const video = new Video({
+      title,
+      description,
+      hashtags: hashtags.split(",").map((word) => `#${word}`),
+    });
+    // database에 기록되고 저장되는데에는 시간이 걸리기 때문에 기다려줘야한다.
+    await video.save();
+    return res.redirect("/");
+  } catch (error) {
+    return res.render("upload", {
+      pageTitle: "Upload Video",
+      errorMessage: error._message,
+    });
+  }
 };
