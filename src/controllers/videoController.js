@@ -33,9 +33,19 @@ export const getEdit = async (req, res) => {
   }
   return res.render("edit", { pageTitle: `Edit ${video.title} `, video });
 };
-export const postEdit = (req, res) => {
+export const postEdit = async (req, res) => {
   const { id } = req.params;
-  const { title } = req.body;
+  const { title, description, hashtags } = req.body;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.render("404", { pageTitle: "Video not found." });
+  }
+  video.title = title;
+  video.description = description;
+  video.hashtags = hashtags
+    .split(",")
+    .map((word) => (word.startsWith("#") ? word : `#${word}`));
+  await video.save();
   return res.redirect(`/videos/${id}`);
 };
 
@@ -45,7 +55,7 @@ export const getUpload = (req, res) => {
 export const postUpload = async (req, res) => {
   const { title, description, hashtags } = req.body;
   try {
-    /* create메소드로 같은 기능을 할수 있다. 
+    /* 
     await Video.create({
       title,
       description,
@@ -56,7 +66,6 @@ export const postUpload = async (req, res) => {
         rating: 0,
       },
     });
-    */
     const video = new Video({
       title,
       description,
@@ -64,6 +73,17 @@ export const postUpload = async (req, res) => {
     });
     // database에 기록되고 저장되는데에는 시간이 걸리기 때문에 기다려줘야한다.
     await video.save();
+    */
+    await Video.create({
+      title,
+      description,
+      createdAt: Date.now(),
+      hashtags: hashtags.split(",").map((word) => `#${word}`),
+      meta: {
+        views: 0,
+        rating: 0,
+      },
+    });
     return res.redirect("/");
   } catch (error) {
     return res.render("upload", {
