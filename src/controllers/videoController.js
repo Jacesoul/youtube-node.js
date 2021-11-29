@@ -101,9 +101,12 @@ export const deleteVideo = async (req, res) => {
 
 export const search = async (req, res) => {
   const { keyword } = req.query;
+  let videos = [];
   console.log("should search for", keyword);
   if (keyword) {
-    //search
+    videos = await Video.find({
+      title: { $regex: new RegExp(keyword, "i") }, // "i" 는 대문자와 소문자를 구분해주지 않기위해 입력한다.
+    });
   }
-  return res.render("search", { pageTitle: "Search" });
+  return res.render("search", { pageTitle: "Search", videos });
 };
