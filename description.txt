@@ -151,3 +151,4 @@ brew services start mongodb-commnunity@4.4
 - npm i bcrypt
 - bcrypt가 rainbow table공격을 막아준다. 
 - saltRounds는 해시된값을 다시 그 수만큼 해시하는것이다. 
+- $or operator를 쓰면 각 조건이 true일 때 실행되게 만들수 있다. 
