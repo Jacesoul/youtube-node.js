@@ -11,6 +11,7 @@ export const home = async (req, res) => {
   */
   try {
     const videos = await Video.find({});
+    console.log(videos);
     return res.render("home", { pageTitle: "Home", videos });
   } catch {
     return res.render("server-error");
@@ -33,8 +34,20 @@ export const postEdit = (req, res) => {
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
   const { title, description, hashtags } = req.body;
+  /* create메소드로 같은 기능을 할수 있다. 
+  await Video.create({
+    title,
+    description,
+    createdAt: Date.now(),
+    hashtags: hashtags.split(",").map((word) => `#${word}`),
+    meta: {
+      views: 0,
+      rating: 0,
+    },
+  });
+  */
   const video = new Video({
     title,
     description,
@@ -45,6 +58,7 @@ export const postUpload = (req, res) => {
       rating: 0,
     },
   });
-  console.log(video);
+  // database에 기록되고 저장되는데에는 시간이 걸리기 때문에 기다려줘야한다.
+  await video.save();
   return res.redirect("/");
 };
