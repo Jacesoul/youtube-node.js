@@ -214,3 +214,5 @@ brew services start mongodb-commnunity@4.4
 - nodeJS에서는 fetch()를 쓸수 없기 때문에 node-fetch를 설치해야한다. 
 - 3. Access토큰으로 user의 정보를 얻을수 있다. 
 - Access토큰이 user가 모든걸 할수 있도록 허용하는것은 아니다. scope에 적은 내용에 대해서만 허용해준다. 
+- Github 로그인 같은 소셜 로그인을 할때 만일 우리가 email 접근 권한이 있다는게 증명이 된다면 즉, password가 있거나 Github의 이메일이 증명된거라면 그 유저가 email의 주인이라는 뜻이니까 로그인 시켜줄수 있다. 
+- 먼저 Github이 주는 이메일 list에서 primary이면서 verified된 email 객체를 찾는다. 그리고 같은 email을 가진 user가 이미 있다면 그 유저를 로그인시켜준다. 
