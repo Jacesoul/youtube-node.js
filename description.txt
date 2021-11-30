@@ -201,3 +201,12 @@ brew services start mongodb-commnunity@4.4
 - dotenv 패키지는 env파일을 읽고 각각의 변수들을 process.env에 넣는다. 
 - dotenv를 가장먼저 실행해야 다른 파일에서도 process.env를 받아들일수 있다. 
 - require를 사용하면 모든파일에 require을 적용해야한다. (import "dotenv/config";를 사용하면 첫시작의 파일에서만 import하면 된다)
+
+### OAuth(Github)
+- 깃헙을 통해 로그인 기능을 사용하고 싶다면 먼저 유저를 깃헙으로 보낸다. 
+- 사용자는 깃헙에서 이메일과 패스워드를 입력한후 우리에게 정보를 공유하는 것을 승인하게된다. 그러면 깃헙은 사용자를 우리 웹사이트로 돌려보낸다. 
+- 깃헙은 유저를 token과 함께 redicrect시킨다. 
+- Github로그인 - Settings - Developer settings - OAuth Apps - Register a new application
+- 1. 사용자를 깃헙으로 보낸다.(https://github.com/login/oauth/authorize?client_id=)
+- [allow_signup=false]를 하면 이미 깃헙에 가입이 되어있는 유저만 깃험로그인이 가능하다.
+- [scope]는 유저에게서 얼마나 많이 정보를 읽어내고 어떤 정보를 가져올 것에 대한 부분이다. 
