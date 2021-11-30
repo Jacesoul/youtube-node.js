@@ -17,10 +17,13 @@ app.use(express.urlencoded({ extended: true })); // 해당 미들웨어를 통�
 
 app.use(
   session({
-    secret: "Hello!",
-    resave: true,
-    saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: "mongodb://127.0.0.1:27017/wetube" }), // 이 부분의 코드가 없다면 세션은 서버메모리에 저장이된다.그러면 서버를 재시작 할때마다 메모리가 지워지게된다.
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 20000, //20초후 세션만료
+    },
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL }), // 이 부분의 코드가 없다면 세션은 서버메모리에 저장이된다.그러면 서버를 재시작 할때마다 메모리가 지워지게된다.
   })
 );
 

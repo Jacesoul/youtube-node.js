@@ -187,3 +187,17 @@ brew services start mongodb-commnunity@4.4
 - app.use(localsMiddleware)의 위치가 중요하다. app.use(session) 아래에 있어야 작동할수있다. 
 - 세션 데이터는 쿠키자체에 저장되지 않고 sessionID만 저장이된다. 세션 데이터는 서버에 저장이된다. 
 - npm i connect-mongo  
+- 익명의 유저의 세션을 저장할필요는 없다. 
+- 모든 유저에게 쿠키를 주지 않고 로그인한 유저에게만 쿠키를 준다. 
+- [saveUninitialized]는 세션을 수정할 때만 세션을 DB에 저장하고 쿠키를 넘겨준다. 
+- IOS나 안드로이드 앱을 만들때 쿠키를 갖지 않기때문에 token을 사용한다.
+- 브라우저에서 인증을 할때는 쿠키를 이용해서 세션 인증을 할수있다. 
+- [secret]은 쿠키에 sign할때 사용하는 string이다. 
+- 쿠키에 sign하는 이유는 백엔드가 쿠키를 줬다는걸 보여주기 위함이다. 
+- [개발자도구]-[어플리케이션]-[쿠키]에서 [Domain]은 쿠키를 만든 백엔드가 누구인지 알려준다. 
+- [Expires]에서 쿠키의 만료날짜가 명시되어 있지 않으면 브라우저를 닫거나 컴퓨터를 재시작하면 세션은 사리지게 된다. 
+- 1. .env파일을 만든다. 2. env파일을 .gitignore에 추가한다. 3. 비밀로 해야하는 string을 process.env.(환경변수)로 바꾼다.
+- npm i dotenv
+- dotenv 패키지는 env파일을 읽고 각각의 변수들을 process.env에 넣는다. 
+- dotenv를 가장먼저 실행해야 다른 파일에서도 process.env를 받아들일수 있다. 
+- require를 사용하면 모든파일에 require을 적용해야한다. (import "dotenv/config";를 사용하면 첫시작의 파일에서만 import하면 된다)
