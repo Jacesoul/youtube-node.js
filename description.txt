@@ -210,3 +210,6 @@ brew services start mongodb-commnunity@4.4
 - 1. 사용자를 깃헙으로 보낸다.(https://github.com/login/oauth/authorize?client_id=)
 - [allow_signup=false]를 하면 이미 깃헙에 가입이 되어있는 유저만 깃험로그인이 가능하다.
 - [scope]는 유저에게서 얼마나 많이 정보를 읽어내고 어떤 정보를 가져올 것에 대한 부분이다. 
+- 2. Github에서 받은 코드를 Access 토큰으로 바꾸기
+- nodeJS에서는 fetch()를 쓸수 없기 때문에 node-fetch를 설치해야한다. 
+- 3. Access토큰으로 user의 정보를 얻을수 있다. 

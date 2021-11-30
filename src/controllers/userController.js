@@ -1,4 +1,5 @@
 import User from "../models/User";
+import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
@@ -58,7 +59,7 @@ export const postLogin = async (req, res) => {
 export const startGithubLogin = (req, res) => {
   const baseUrl = `https://github.com/login/oauth/authorize`;
   const config = {
-    client_id: "c1c4d6b99499b9cb67a0",
+    client_id: process.env.GITHUB_CLIENT,
     allow_signup: false,
     scope: "read:user user:email",
   };
@@ -67,7 +68,38 @@ export const startGithubLogin = (req, res) => {
   return res.redirect(finalUrl);
 };
 
-export const finishGithubLogin = (req, res) => {};
+export const finishGithubLogin = async (req, res) => {
+  const baseUrl = "https://github.com/login/oauth/access_token";
+  const config = {
+    client_id: process.env.GITHUB_CLIENT,
+    client_secret: process.env.GITHUB_SECRET,
+    code: req.query.code, // code의 만료시간은 10분이다.
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalUrl = `${baseUrl}?${params}`;
+  const tokenRequest = await (
+    await fetch(finalUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+  ).json(); // fetch를 통해 데이터를 받아오고 그 데이터에서 JSON을 추출한다.
+  if ("access_token" in tokenRequest) {
+    const { access_token } = tokenRequest;
+    const userRequest = await (
+      await fetch("https://api.github.com/user", {
+        headers: {
+          Authorization: `token ${access_token}`,
+        },
+      })
+    ).json();
+    console.log(userRequest);
+  } else {
+    return res.redirect("/login");
+  }
+};
+
 export const edit = (req, res) => res.send("Edit User");
 export const remove = (req, res) => res.send("Delete User");
 export const logout = (req, res) => res.send("Logout User");
