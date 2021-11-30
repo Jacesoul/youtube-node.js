@@ -213,3 +213,4 @@ brew services start mongodb-commnunity@4.4
 - 2. Github에서 받은 코드를 Access 토큰으로 바꾸기
 - nodeJS에서는 fetch()를 쓸수 없기 때문에 node-fetch를 설치해야한다. 
 - 3. Access토큰으로 user의 정보를 얻을수 있다. 
+- Access토큰이 user가 모든걸 할수 있도록 허용하는것은 아니다. scope에 적은 내용에 대해서만 허용해준다. 
