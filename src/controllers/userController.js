@@ -142,8 +142,29 @@ export const getEdit = (req, res) => {
   });
 };
 
-export const postEdit = (req, res) => {
-  return res.render("edit-profile");
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { name, email, username, location },
+  } = req;
+  const updatedUser = await User.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      email,
+      username,
+      location,
+    },
+    { new: true }
+  ); // new 옵션에서 true를 하게 되면 findByIdAndUpdate가 update이후의 user객체를 리턴해준다.(기본적으로는 update전의 값을 리턴)
+  /*
+  req.session.user = { ...req.session.user, name, email, username, location }; 
+  ========> ...req.session.user는 나머지 내용은 session에 있는 user 객체와 같다고 명시해주는것이다.
+  */
+  req.session.user = updatedUser;
+  return res.redirect("/users/edit");
 };
 
 export const see = (req, res) => res.send("See User");
