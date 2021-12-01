@@ -55,14 +55,16 @@ export const postUpload = async (req, res) => {
   const { path: fileUrl } = req.file; // path의 이름을 fileUrl로 바꿀수 있다.
   const { title, description, hashtags } = req.body;
   try {
-    console.log(hashtags);
-    await Video.create({
+    const newVideo = await Video.create({
       title,
       description,
       fileUrl,
       owner: _id,
       hashtags: Video.formatHashtags(hashtags),
     });
+    const user = await User.findById(_id);
+    user.videos.push(newVideo._id);
+    await user.save();
     return res.redirect("/");
   } catch (error) {
     return res.status(400).render("upload", {
