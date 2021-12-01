@@ -233,3 +233,5 @@ brew services start mongodb-commnunity@4.4
 - static files serving은 폴더 전체를 브라우저에 노출시킨다는 의미이다. 
 - express.static()에서 static()에는 우리가 노출시키고 싶은 폴더의 이름을 쓰면 된다. 
 - video 업로드를 할때도 HTML form에 enctype="multipart/form-data"를 꼭 넣어줘야한다. 
+- User와 Video를 연결하기 위해서는 id를 이용해야한다.
+- 모델 스키마에서 ref에는 해당 모델의 이름과 동일하게 입력해야한다. 
