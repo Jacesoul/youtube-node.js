@@ -7,7 +7,8 @@
     "url": "git+https://github.com/Jacesoul/youtube-node.js.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js"
+    "dev": "nodemon --exec babel-node src/init.js",
+    "assets": "webpack --config webpack.config.js"
   },
   "author": "Jace",
   "license": "MIT",
@@ -16,6 +17,7 @@
   },
   "homepage": "https://github.com/Jacesoul/youtube-node.js#readme",
   "dependencies": {
+    "babel-loader": "^8.2.3",
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
     "dotenv": "^10.0.0",
@@ -31,6 +33,8 @@
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
   }
 }

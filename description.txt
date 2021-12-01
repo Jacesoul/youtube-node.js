@@ -247,3 +247,24 @@ brew services start mongodb-commnunity@4.4
 - Gulp는 Webpack보다 쉬운 대채제라고 할수 있다.  
 - Gulp가 Webpack의 쉬운 대체제가 될수 있지만 Webpack만큼 유용하지 않다. 
 - 대부분의 프레임워크에는 Webpack이 내장되어있다. 
+- npm i webpack webpack-cli --save-dev
+- Webpack CLI를 이용해서 콘솔에서 Webpack을 불러낼수 있다. 
+- webpack은 우리 파일들을 바꿔주는 기능을 한다. 
+- webpack을 설정하기 위해서는 webpack.config.js라는 파일을 생성해야한다. 
+- webpack.config.js에서는 오래된 javascript코드만 이해할수있다.
+- webpack configuration에는 두가지 주의사항이 있다. 
+- 한가지는 Entry인데 Entry는 우리가 처리하고자 하는 파일들이다. 
+- src안의 client 폴더 안에 있는 코드들은 서버가 아니라 브라우저에서 실행될거란걸 알수있다. 
+- 현재의 목표는 src/client/js/main.js를 Webpack에 전달하는것이다.     
+- 기본적으로 webpack의 모든 파일들에는 entry가 필요하고 output이 필요하다. 
+- entry는 소스코드를 의미한다. (우리가 처리하고 싶은 파일)
+- "assets": "webpack --config webpack.config.js" Webpack을 실행시킬 스트립트 작성 
+- npm run assets를 실행시키니 output의 경로를 절대경로로 입력하라는 경고창이 나온다. 
+- [__dirname]은 파일까지의 전체경로를 말한다. (/Users/jace/Development/youtube-node.js/youtube-node.js)
+- path.resolve()는 몇개가 됐든 우리가 입력하는 파트들을 모아서 경로로 만들어주는 기능을 한다. 
+- webpack으로 압축하니 (async()=>{alert("hi! it's working"),await fetch("")})(); 이렇게 바뀌었다.  
+- Webpack에게 원하는건 코드를 오래된 브라우저에서도 이해할 수 있게 전환시키는 것이다. 
+- [rules]는 우리가 각각의 파일 종료에 따라 어떤 전환을 할 건지 결정하는것이다. 
+- npm i babel-loader
+- loader를 사용해서 내가 작성한 파일들을 처리한다. 
+- Webpack에서 mode를 설정해주지 않으면 기본으로 production mode로 설정이 되고 그렇게 되면 코드를 다 압축하게 되는데 개발중에는 불필요하다. 
