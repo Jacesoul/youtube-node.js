@@ -153,7 +153,10 @@ export const postEdit = async (req, res) => {
   console.log(file);
   const existEmail = await User.findOne({ email });
   const existUsername = await User.findOne({ username });
-  if (existEmail.id !== _id || existUsername !== _id) {
+  if (
+    String(existEmail._id) != String(_id) ||
+    String(existUsername._id) != String(_id)
+  ) {
     return res.render("edit-profile", {
       pageTitle: "Edit Profile",
       errorMessage: "You can't use this username/email",
