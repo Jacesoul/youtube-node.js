@@ -1,6 +1,7 @@
 import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
+import Video from "../models/Video";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
@@ -152,7 +153,7 @@ export const postEdit = async (req, res) => {
   console.log(file);
   const existEmail = await User.findOne({ email });
   const existUsername = await User.findOne({ username });
-  if (existEmail.id !== _id && existUsername !== _id) {
+  if (existEmail.id !== _id || existUsername !== _id) {
     return res.render("edit-profile", {
       pageTitle: "Edit Profile",
       errorMessage: "You can't use this username/email",
@@ -220,8 +221,10 @@ export const see = async (req, res) => {
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }
+  const videos = await Video.find({ owner: id });
   return res.render("users/profile", {
     pageTitle: user.name,
     user,
+    videos,
   });
 };

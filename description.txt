@@ -235,3 +235,5 @@ brew services start mongodb-commnunity@4.4
 - video 업로드를 할때도 HTML form에 enctype="multipart/form-data"를 꼭 넣어줘야한다. 
 - User와 Video를 연결하기 위해서는 id를 이용해야한다.
 - 모델 스키마에서 ref에는 해당 모델의 이름과 동일하게 입력해야한다. 
+- mongoose에서 poplulate()메소드를 사용하면 user에 대한 전체 정보를 가져올수있다.(Video 스키마에서 ref을 명시해줬기 때문에)
+- poplulate을 사용하지 않으면 owner는 그냥 String id값을 가진다. 

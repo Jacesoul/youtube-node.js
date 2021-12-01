@@ -1,4 +1,8 @@
 extends ../base
+include ../mixins/video
 
-block content    
-  h1=pageTitle
+block content 
+  each video in videos  
+    +video(video)
+  else 
+    div Sorry nothing found.
