@@ -232,4 +232,4 @@ brew services start mongodb-commnunity@4.4
 - img(src=loggedInUser.avatarUrl)에서 상대 경로를 해주면 앞에 /users가 붙기 때문에 앞에 /를 붙여서 절대경로로 만들어줘야한다.
 - static files serving은 폴더 전체를 브라우저에 노출시킨다는 의미이다. 
 - express.static()에서 static()에는 우리가 노출시키고 싶은 폴더의 이름을 쓰면 된다. 
-- 
+- video 업로드를 할때도 HTML form에 enctype="multipart/form-data"를 꼭 넣어줘야한다. 

@@ -47,12 +47,14 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = async (req, res) => {
+  const { path: fileUrl } = req.file; // path의 이름을 fileUrl로 바꿀수 있다.
   const { title, description, hashtags } = req.body;
   try {
     console.log(hashtags);
     await Video.create({
       title,
       description,
+      fileUrl,
       hashtags: Video.formatHashtags(hashtags),
     });
     return res.redirect("/");
