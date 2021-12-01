@@ -219,3 +219,17 @@ brew services start mongodb-commnunity@4.4
 
 ### User Profile
 - pug 파일에서 users라는 폴더를 만들고 그 안에서 base를 extends한다면 ../base로 불러와야한다. 
+- multer는 우리가 파일을 업로드 할수 있게 해준다. 
+- npm i multer
+- multer는 multipart가 아닌 form을 처리하지 않는다. 
+- enctype="multipart/form-data"은 파일을 백엔드로 보내기 위해 필요한 encoding type(enctype)이다. 
+- multer의 옵션중 dest는 파일을 어디로 보낼까하는 destination이다. 
+- 사용자가 파일을 보내면 그 파일을 어딘가 넣어야한다.
+- .single의 의미는 하나의 파일만 업로드하는것이고 파일의 input name을 middleware에 전달해야한다. 
+- .single("avatar")이 하는 역할은 template의 input에서 오는 avatar파일을 가지고 파일을 업로드하고 uploads 폴더에 저장한다. 그리고 다음 controller인 postEdit에 그 파일 정보를 전달한다.  (미들웨어의 순서가 아주 중요하다!)
+- 좋은 소식은, 이렇게하면 request에 req.file이 추가된다는것이다.   
+- DB에 파일을 저장하면 안된다. 대신에 폴더에 파일을 저장하고 DB에는 그 파일의 위치만 저장해야한다. 
+- img(src=loggedInUser.avatarUrl)에서 상대 경로를 해주면 앞에 /users가 붙기 때문에 앞에 /를 붙여서 절대경로로 만들어줘야한다.
+- static files serving은 폴더 전체를 브라우저에 노출시킨다는 의미이다. 
+- express.static()에서 static()에는 우리가 노출시키고 싶은 폴더의 이름을 쓰면 된다. 
+- 
