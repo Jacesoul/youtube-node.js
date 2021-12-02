@@ -287,3 +287,9 @@ brew services start mongodb-commnunity@4.4
 - style-loader를 사용하는대신 MiniCssExtractPlugin의 loader를 사용한다. 
 - 이건 css를 추출해서 별도의 파일로 만들어준다. 
 - npm run assets을 실행하면 main.css파일이 생성된다. 
+- Webpack에서 [watch]옵션을 true하면 concole이 기본적으로 client 파일들을 주시하게된다. 
+- Webpack에서 [clean]옵션을 true하면 output 폴더를 build 시작하기전에 clean해준다. 
+- 백엔드쪽에서는 npm run dev를 실행하고, 프런트에서는 npm run assest을 실행한다. 
+- 프런트에 있는 javascript코드가 변경된다고해서 백엔드가 다시 재시작하기 원하지 않는다. nodemon을 변경해줘야함.
+- nodemon.json파일 생성후 ignore옵션 설정
+- nodemon은 기본적으로 nodemon.json이라는 설정파일 찾고 Webpack은 기본적으로 webpack.config.js파일을 찾는다. 
