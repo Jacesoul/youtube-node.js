@@ -268,3 +268,8 @@ brew services start mongodb-commnunity@4.4
 - npm i babel-loader
 - loader를 사용해서 내가 작성한 파일들을 처리한다. 
 - Webpack에서 mode를 설정해주지 않으면 기본으로 production mode로 설정이 되고 그렇게 되면 코드를 다 압축하게 되는데 개발중에는 불필요하다. 
+- client안의 파일들은 Webpack이 처리하기전의 파일이고 assets안의 파일은 Webpack이 실행되고 난 다음 만들어진 파일들이다.   
+- uploads폴더와 마찬가지로 express.static()은 Express한테 사람들이 이 폴더 안에 있는 파일들을 볼수 있게 해달라고 요청하는것이다. 기본적으로 폴더들은 공개되어 있지 않기때문에. 
+- app.use에서 URL은 원하는 이름으로 설정할수 있다. express.static에서만 폴더 이름을 잘적어주면된다. 
+- client폴더에서 최신의 세련된 코드를 짜고 그 코드는 Webpack을 통해 assets폴더로 들어오고 base.pug는 assets폴더로부터 파일들을 불러온다. 
+- assets에 있는 코드는 node.js코드가 아닌 브라우저를 위한 코드이다. 
