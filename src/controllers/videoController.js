@@ -110,7 +110,7 @@ export const search = async (req, res) => {
   if (keyword) {
     videos = await Video.find({
       title: { $regex: new RegExp(keyword, "i") }, // "i" 는 대문자와 소문자를 구분해주지 않기위해 입력한다.
-    });
+    }).populate("owner");
   }
   return res.render("search", { pageTitle: "Search", videos });
 };

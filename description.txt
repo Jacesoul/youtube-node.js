@@ -144,6 +144,7 @@ brew services start mongodb-commnunity@4.4
 - mongoose 미들웨어를 만들때 무조건 model이 생성되기 전에 만들어야한다. 
 - mongoose의 static메소드를 통해서 Video 모델에 직접 접근해서 직접 function을 생성할수 있다. 
 - 위의 방식대로 다른 function을 어디서 import 할 필요가 없고 Video만 import 하면 formatHashtags도 딸려온다. 
+- doulbe populate 하는 방법 => path를 통해서 populate하고 싶은 경로를 적고 model로 그 스키마를 명시해줄수있다.  
 
 ### User Authentication
 - 해싱은 일방향 함수인데 문자열이 필요하다. (출력값으로 입력값을 알아낼수 없다 / 같은 입력값으로 항상 같은 출력값이 나온다)
