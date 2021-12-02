@@ -293,3 +293,10 @@ brew services start mongodb-commnunity@4.4
 - 프런트에 있는 javascript코드가 변경된다고해서 백엔드가 다시 재시작하기 원하지 않는다. nodemon을 변경해줘야함.
 - nodemon.json파일 생성후 ignore옵션 설정
 - nodemon은 기본적으로 nodemon.json이라는 설정파일 찾고 Webpack은 기본적으로 webpack.config.js파일을 찾는다. 
+
+### Styles
+- link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
+- client폴더의 components에는 headers랑 footers를 넣고 screens에는 home이랑 search를 넣는다. 
+- partial이나 mixin을 생성할때 scss에도 같은 이름의 파일을 만든다. 
+- home, join, login, search와 같은 template를 만들었다면 그 다음에 해야할일은 screen폴더에 screen파일을 만드는것이다. 
+- mixin이나 partial 파일을 만들었다면 components 폴더에 파일을 만들어야한다. 
