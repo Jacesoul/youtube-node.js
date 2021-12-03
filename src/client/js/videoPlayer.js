@@ -91,23 +91,9 @@ const handleMouseMove = () => {
   controlsMovementTimeout = setTimeout(hideControls, 3000);
 };
 
-const handlePlayWithVideo = () => {
-  if (video.paused) {
-    video.play();
-  } else {
-    video.pause();
-  }
-  playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
-};
-
 const handlePushSpacebar = (event) => {
   if (event.code === "Space") {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-    playBtnIcon.classList = video.paused ? "fas fa-play" : "fas fa-pause";
+    handlePlay();
   }
 };
 
@@ -119,5 +105,5 @@ volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("loadeddata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
 videoContainer.addEventListener("mousemove", handleMouseMove);
-video.addEventListener("click", handlePlayWithVideo);
+video.addEventListener("click", handlePlay);
 document.addEventListener("keyup", handlePushSpacebar);
