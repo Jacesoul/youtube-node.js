@@ -318,3 +318,8 @@ brew services start mongodb-commnunity@4.4
 - setTimeOut function을 부를때, return으로 뭔가를 받는다.    
 - 브라우저가 timeOut에 부여하는 아이디는 1개이다. 
 - clearTimeout이라는 function에 이 id를 건네주면된다. 
+
+### Views API
+- SSR(Server Side Rendering)방식은 서버가 템플릿을 렌더링하는 일까지 처리하는 것이다. 
+- API는 프런트와 백엔드가 서버를 통해 통신하는 방법이다. 
+- interactivity는 URL이 바뀌지 않아도 페이지에서 변화가 생기는것을 말한다.
