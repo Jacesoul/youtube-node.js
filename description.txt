@@ -305,3 +305,9 @@ brew services start mongodb-commnunity@4.4
 ### Video Player
 - video player를 위한 javascript파일을 분리시키기위해 webpack.config.js에서 entry를 구분하고 output폴더 filename에는 filename: "js/[name].js"으로 변경한다. 
 - metadata는 비디오를 제외한 모든것을 말한다. 예를들어 비디오 시간, 비디오의 가로, 세로크기 등등 비디오에서 움직이는 이미지들을 제외한 모든 extra한 데이터들을 말한다. 
+- 컴퓨터는 1970년 1월 1일부터 날짜를 세기 시작한다.
+- date Constructor가 이 시점 이후의 date를 만들어주기때문에 아주 중요하다. 
+- new Date()는 기본적으로 한국시간으로 나오기 때문에 뒤에 toISOString()을 붙이면 기본설정시간으로 변경이 된다. 
+- substr()메소드를 사용하면 string을 자를수있다. 
+- new Date().toISOString().substr(11,8) => '00:00:00'
+- new Date().toISOString().substr("어디서부터 자를건지","어느길이 만큼 자를건지 ")
