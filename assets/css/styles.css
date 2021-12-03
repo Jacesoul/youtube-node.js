@@ -266,6 +266,57 @@ input[type=submit],
   color: azure;
 }
 
+#videoContainer {
+  width: 100%;
+  position: relative;
+}
+#videoContainer video {
+  width: 100%;
+}
+#videoContainer .videoControls {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr auto;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: #0f1117;
+  padding: 10px;
+}
+#videoContainer .videoControls.showing {
+  opacity: 1;
+}
+#videoContainer .videoControls__play {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#videoContainer .videoControls__play .videoControls__playBtn {
+  margin: 0px 15px;
+}
+#videoContainer .videoControls__play .videoControls__time {
+  font-size: 12px;
+}
+#videoContainer .videoControls__volume {
+  display: flex;
+  align-items: center;
+}
+#videoContainer .videoControls__volume span {
+  margin-left: 10px;
+}
+#videoContainer .videoControls__volume span i {
+  font-size: 20px;
+}
+
 .search__form {
   margin-bottom: 60px;
   display: flex;
