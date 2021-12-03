@@ -304,3 +304,4 @@ brew services start mongodb-commnunity@4.4
 
 ### Video Player
 - video player를 위한 javascript파일을 분리시키기위해 webpack.config.js에서 entry를 구분하고 output폴더 filename에는 filename: "js/[name].js"으로 변경한다. 
+- metadata는 비디오를 제외한 모든것을 말한다. 예를들어 비디오 시간, 비디오의 가로, 세로크기 등등 비디오에서 움직이는 이미지들을 제외한 모든 extra한 데이터들을 말한다. 
