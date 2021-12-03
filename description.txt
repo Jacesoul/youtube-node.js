@@ -312,3 +312,6 @@ brew services start mongodb-commnunity@4.4
 - new Date().toISOString().substr(11,8) => '00:00:00'
 - new Date().toISOString().substr("어디서부터 자를건지","어느길이 만큼 자를건지 ")
 - MDN 문서에서 [Read only]라고 적혀있으면 그 값을 세팅할수없다는 뜻이다. 
+- setTimeOut function을 부를때, return으로 뭔가를 받는다.    
+- 브라우저가 timeOut에 부여하는 아이디는 1개이다. 
+- clearTimeout이라는 function에 이 id를 건네주면된다. 
