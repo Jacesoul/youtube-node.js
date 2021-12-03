@@ -301,3 +301,6 @@ brew services start mongodb-commnunity@4.4
 - partial이나 mixin을 생성할때 scss에도 같은 이름의 파일을 만든다. 
 - home, join, login, search와 같은 template를 만들었다면 그 다음에 해야할일은 screen폴더에 screen파일을 만드는것이다. 
 - mixin이나 partial 파일을 만들었다면 components 폴더에 파일을 만들어야한다. 
+
+### Video Player
+- video player를 위한 javascript파일을 분리시키기위해 webpack.config.js에서 entry를 구분하고 output폴더 filename에는 filename: "js/[name].js"으로 변경한다. 
