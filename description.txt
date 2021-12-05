@@ -329,3 +329,9 @@ brew services start mongodb-commnunity@4.4
 - VanillaJS에서 Element.dataset으로 데이터에 접근이 가능하다.  
 - res.status()는 render()하기 전에 상태코드를 정할수있다. 
 - res.sendStatus()는 상태코드를 보내고 연결을 끝낸다. 
+
+### Video Recorder 
+- navigator.mediaDevices.getUserMedia함수는 navigator에서 카메라와 오디오를 가져다준다. 
+- 프런트에서 async와 await을 사용하려면 regeneratorRuntime을 설치해야한다. 
+- npm i regenerator-runtime
+- main.js에 regeneratorRuntime import후 base.pug에 main.js 연결시키기 
