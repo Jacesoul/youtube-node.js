@@ -100,7 +100,7 @@ const handlePushSpacebar = (event) => {
 const handleEnded = () => {
   const { id } = videoContainer.dataset;
   fetch(`/api/videos/${id}/view`, {
-    method: "POST ",
+    method: "POST",
   });
 };
 
@@ -109,8 +109,8 @@ muteBtn.addEventListener("click", handleMute);
 fullScreenBtn.addEventListener("click", handleFullScreen);
 timeline.addEventListener("input", handleTimelineChange);
 volumeRange.addEventListener("input", handleVolumeChange);
-video.addEventListener("loadeddata", handleLoadedMetadata);
 video.addEventListener("timeupdate", handleTimeUpdate);
+video.addEventListener("loadedmetadata", handleLoadedMetadata);
 video.addEventListener("ended", handleEnded);
 videoContainer.addEventListener("mousemove", handleMouseMove);
 video.addEventListener("click", handlePlay);
