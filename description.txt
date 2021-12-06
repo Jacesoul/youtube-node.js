@@ -335,10 +335,30 @@ brew services start mongodb-commnunity@4.4
 - 프런트에서 async와 await을 사용하려면 regeneratorRuntime을 설치해야한다. 
 - npm i regenerator-runtime
 - main.js에 regeneratorRuntime import후 base.pug에 main.js 연결시키기 
+- removeEventListener를 사용하는 이유는 handleStart의 EventListener를 제거해주지 않으면, 시작버튼을 눌렀을때 handleStart와 handleStop이 같이 실행이 된다. 
 - srcObject는 MediaStream, MediaSource, Blob, File을 실행할때 video에게 주는 무언가를 의미한다. 
 - srcObject는 HTML요소인 scr와는 다르다. URL에서 src를 사용한다. 
+- getUserMedia는 mediaDevices라는 객체의 function인데 mediaDevices는 마이크, 카메라와 같은 미디어 장비들에 접근하게 한다.
 - MediaRecorder에는 stream을 넣어줘야한다. recorder.stop()으로 녹화가 종료되면 dataavailable event가 발생된다. 그 event를 잡으려면 ondataavailable이라는 handler를 사용해야한다. 문서에 따르면 event로 data property를 가진 BlobEvent를 받게 된다. 
-- createObjectURL은 브라우저 메모리에서만 가능한 URL을 만들어준다. 이 URL은 파일을 가리킨다. 
+- ondataavailable은 녹화가 멈추면 발생되는 event이다. 
+- createObjectURL은 브라우저 메모리에서만 가능한 URL을 만들어준다. 이 URL은 파일을 가리킨다. 이 URL은 서버에 존재하지 않는다. 
 - console.log에서 보여질 URL은 웹사이트상에서 존재하는 URL처럼 보이지만 실제로는 존재하지 않는다. 
 - 단순히 브라우저의 메모리를 가리키기만 하고 있는 URL이다. 
-- a태그에 download라는 속성을 추가해주면 다운로드를 시켜준다. 
+- a태그에 download라는 속성을 추가해주면 다운로드를 시켜준다.(URL로 넘어가는게 아니라 URL의 콘텐츠를 다운로드 받는다)
+- 링크를 body에 추가하는것은 매우 중요하다. body에 존재하지 않는 링크는 클릭할수 없기때문이다. 
+- stream은 우리가 어딘가에 넣어둘 0과 1로 이루어진 데이터를 의미한다. 또한 실시간으로 재생되는 무언가라는 의미이기도하다. 
+- 카메라가 stream을 받아오고, 그걸 video 요소에 담아준다. 
+
+### WEBASSEMBLY VIDEO TRANSCODE
+- FFmpeg는 세계 최고의 소프트웨어중 하나이다. 비디오나 오디오같은 어떤 종류의 미디어 파일을 다룰수 있다. 
+- 비디오를 압축하거나 비디오 포맷을 변환해야 하거나 비디오에서 오디오를 추출하고 싶거나 비디오에서 스크린샷을 찍고 싶거나하는 많은것들을 FFmpeg로 할수 있다.  
+- FFmpeg를 실행하려면 백엔드에서만 실행해야한다. 그러면 아주 좋은 서버가 필요하다. 메모리가 필요하고 그래픽 장치가 필요하다. 
+- 이 문제를 해결하기위해 WebAssembly가 있다. 
+- WebAssembly는 웹사이트가 매우 빠른 코드를 실행할수 있게 해준다. javascript를 쓰지 않고, 다른 종류의 프로그램을 사용할수 있다. 
+- 웹어셈블리를 사용하면 프런트에서 정말 빠른 코드를 실행할수있다. 
+- 실행비용이 큰 프로그램들을 브라우저에서 실행할수 있다. 
+- 웹어셈블리로 언젠가는 아무것도 설치하지 않고도 브라우저에서 전체 비디오 게임을 실행하게 될것이다. 
+- ffmpeg.wasm는 비디오를 변환하기 위해 사용자의 컴퓨터를 사용한다. 
+- 유튜브는 업로드된 비디오를 그들의 비싼 서버에서 변환한다. 그러나 우리는 사용자의 브라우저에서 비디오를 변환한다.(사용자 컴퓨터의 처리능력을 사용) 
+- npm install @ffmpeg/ffmpeg @ffmpeg/core
+- webm에서 mp4로 변환하는 이유는 모든기기들이 webm을 이해하지 못하기 때문이다. iOS에서는 webm비디오를 볼수 없을수도 있다. mp4는 모두가 이해한다.
