@@ -335,3 +335,6 @@ brew services start mongodb-commnunity@4.4
 - 프런트에서 async와 await을 사용하려면 regeneratorRuntime을 설치해야한다. 
 - npm i regenerator-runtime
 - main.js에 regeneratorRuntime import후 base.pug에 main.js 연결시키기 
+- srcObject는 MediaStream, MediaSource, Blob, File을 실행할때 video에게 주는 무언가를 의미한다. 
+- srcObject는 HTML요소인 scr와는 다르다. URL에서 src를 사용한다. 
+- MediaRecorder에는 stream을 넣어줘야한다. recorder.stop()으로 녹화가 종료되면 dataavailable event가 발생된다. 그 event를 잡으려면 ondataavailable이라는 handler를 사용해야한다. 문서에 따르면 event로 data property를 가진 BlobEvent를 받게 된다. 
