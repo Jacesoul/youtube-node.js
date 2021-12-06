@@ -374,3 +374,5 @@ brew services start mongodb-commnunity@4.4
 - app.use(flash())에서 flash()가 session에 연결해서 사용자에게 메시지를 남긴다.
 - flash() 미들웨어를 설치한 순간부터 req.flesh라는 함수를 사용할수있다.   
 - redirect하는곳에 req.flash사용(템플릿을 rendering 할때도 사용할수 있지만 보통 redirect할때 메시지를 보낸다)   
+- flash 미들웨어를 설치하면 우리를 위해 messages.locals를 만들어준다. loggedIn, siteName, loggedInUser처럼 locals는 템플릿에서 사용가능하다. 
+- flash messae는 메세지를 한번만 보여주고나면 express가 메시지를 cache에서 지워버린다. 
