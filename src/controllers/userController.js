@@ -133,6 +133,7 @@ export const finishGithubLogin = async (req, res) => {
 
 export const logout = (req, res) => {
   req.session.destroy();
+  req.flash("info", "bye bye");
   return res.redirect("/");
 };
 
@@ -184,6 +185,7 @@ export const postEdit = async (req, res) => {
 
 export const getChangePassword = (req, res) => {
   if (req.session.user.socialOnly === true) {
+    req.flash("error", "Can't change password");
     return res.redirect("/");
   }
   return res.render("users/change-password", { pageTitle: "Change Password" });
@@ -215,6 +217,7 @@ export const postChangePassword = async (req, res) => {
   console.log("New unhashed pw", user.password);
   await user.save(); //   save를 해줘야 userSchema.pre에서 bcrypt로 해시된 패스워드를 저장해준다.
   console.log("new hashed pw", user.password);
+  req.flash("info", "Password updated");
   return res.redirect("/users/logout");
 };
 
