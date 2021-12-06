@@ -15,20 +15,39 @@ const handleDownload = async () => {
 
   await ffmpeg.run("-i", "recording.webm", "-r", "60", "output.mp4"); // ffmpeg를 사용자의 브라우저에서 로딩하기 때문에 ffmpeg 명령어를 사용자의 브라우저에서 실행되게 할수 있다. 여기서 recording.webm는 파일이고 input으로 받아서 output으로 변환해주는 명령어이다. "-r", "60"은 영상을 초당 60프레임으로 인코딩해주는 명령어이다. 즉, 더 빠른 영상 인코딩을 가능하게 해준다.
 
+  await ffmpeg.run(
+    "-i",
+    "recording.webm",
+    "-ss",
+    "00:00:01",
+    "-frames:v",
+    "1",
+    "thumbnail.jpg"
+  ); // -ss는 영상의 특정 시간대로 갈수 있게 해준다. "-frames:v" "1"은 첫 프레임의 스크린샷을 찍어준다. 그 파일을 thumbnail.jpg로 저장한다. 이 파일은 파일시스템(FS)의 메모리에 만들어진다.
+
   const mp4File = ffmpeg.FS("readFile", "output.mp4"); // unsigned integer은 양의 정수를 의미한다. 반대로 signed는 음의 정수를 의미한다.
+  const thumbFile = ffmpeg.FS("readFile", "thumbnail.jpg");
 
   console.log(mp4File); // Unit8Array -> 자바스크립트가 파일을 보여주는 방식이다. 그렇지만 이것을 가지고는 아무것도 할수가 없다. 그래서 blob을 만든다. blob은 자바스크립트 세계의 파일과 같다.(binary정보를 가지고 있는 파일)
   console.log(mp4File.buffer); // ArrayBuffer -> Unit8Array로 부터 blob을 만들수는 없지만 ArrayBuffer로는 만들수 있다. Unit8Array의 raw data, 즉 binary data에 접근하려면 mp4File.buffer를 사용해야한다. ArrayBuffer는 raw binary data를 나타내는 object이다. 한마디로 영상을 나타내는 bytes의 배열이다.
 
   const mp4Blob = new Blob([mp4File.buffer], { type: "video/mp4" });
+  const thumbBlob = new Blob([thumbFile.buffer], { type: "image/jpg" });
 
   const mp4Url = URL.createObjectURL(mp4Blob);
+  const thumbUrl = URL.createObjectURL(thumbBlob);
 
   const a = document.createElement("a");
   a.href = mp4Url;
   a.download = "MyRecording2.mp4";
   document.body.appendChild(a);
   a.click(); // 사용자 대신 링크를 클릭
+
+  const thumbA = document.createElement("a");
+  thumbA.href = thumbUrl;
+  thumbA.download = "MyThumbnail.jpg";
+  document.body.appendChild(thumbA);
+  thumbA.click();
 };
 
 const handleStop = () => {
