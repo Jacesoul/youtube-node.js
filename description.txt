@@ -338,3 +338,7 @@ brew services start mongodb-commnunity@4.4
 - srcObject는 MediaStream, MediaSource, Blob, File을 실행할때 video에게 주는 무언가를 의미한다. 
 - srcObject는 HTML요소인 scr와는 다르다. URL에서 src를 사용한다. 
 - MediaRecorder에는 stream을 넣어줘야한다. recorder.stop()으로 녹화가 종료되면 dataavailable event가 발생된다. 그 event를 잡으려면 ondataavailable이라는 handler를 사용해야한다. 문서에 따르면 event로 data property를 가진 BlobEvent를 받게 된다. 
+- createObjectURL은 브라우저 메모리에서만 가능한 URL을 만들어준다. 이 URL은 파일을 가리킨다. 
+- console.log에서 보여질 URL은 웹사이트상에서 존재하는 URL처럼 보이지만 실제로는 존재하지 않는다. 
+- 단순히 브라우저의 메모리를 가리키기만 하고 있는 URL이다. 
+- a태그에 download라는 속성을 추가해주면 다운로드를 시켜준다. 
