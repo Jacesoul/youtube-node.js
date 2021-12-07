@@ -404,3 +404,6 @@ JSON.parse('{"text":"I like it","rating":5}')
 - 코드를 babel로 컴파일할때 pug파일은 build폴더에 없다. 
 - npm run start를 하니 regeneratorRuntime에러 발생 
 - init.js에 regeneratorRuntime import
+- webpack에는 development와 production 모드가 있다. production코드가 훨씬 더 작다. (압축되어있다)
+- webpack설정으로 scripts에서 command로 mode설정을 보낼수 있다. 
+- webpack watch모드는 development에서만 true로 해야한다.(watch를 command에 -w로 적용)

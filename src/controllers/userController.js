@@ -213,11 +213,8 @@ export const postChangePassword = async (req, res) => {
       errorMessage: "The password does not match the confirmation",
     });
   }
-  console.log("old password", user.password);
   user.password = newPassword;
-  console.log("New unhashed pw", user.password);
   await user.save(); //   save를 해줘야 userSchema.pre에서 bcrypt로 해시된 패스워드를 저장해준다.
-  console.log("new hashed pw", user.password);
   req.flash("info", "Password updated");
   return res.redirect("/users/logout");
 };
@@ -231,7 +228,6 @@ export const see = async (req, res) => {
       model: "User",
     },
   });
-  console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found." });
   }

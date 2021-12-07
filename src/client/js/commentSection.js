@@ -43,13 +43,11 @@ const handleSubmit = async (event) => {
   }
 };
 const handleDeleteComment = async (event) => {
-  console.log("click!");
   const videoId = videoContainer.dataset.id;
   const li = event.srcElement.parentNode;
   const {
     dataset: { id },
   } = li;
-  console.log(id);
   const response = await fetch(`/api/comments/${id}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
