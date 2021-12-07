@@ -1,5 +1,6 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
+const deleteBtns = document.querySelectorAll(".video__comment-delete");
 
 const addComment = (text, id) => {
   const videoComments = document.querySelector(".video__comments ul");
@@ -12,12 +13,14 @@ const addComment = (text, id) => {
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
   const deleteSpan = document.createElement("span");
-  deleteSpan.innerText = " ❌";
+  deleteSpan.className = "video__comment-delete";
+  deleteSpan.innerText = `❌`;
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(deleteSpan);
   // 생성한 li,i,span을 ul에 결합
   videoComments.prepend(newComment);
+  deleteSpan.addEventListener("click", handleDeleteComment);
 };
 
 const handleSubmit = async (event) => {
@@ -39,6 +42,29 @@ const handleSubmit = async (event) => {
     addComment(text, newCommentId);
   }
 };
+const handleDeleteComment = async (event) => {
+  console.log("click!");
+  const videoId = videoContainer.dataset.id;
+  const li = event.srcElement.parentNode;
+  const {
+    dataset: { id },
+  } = li;
+  console.log(id);
+  const response = await fetch(`/api/comments/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ videoId }),
+  });
+  if (response.status === 200) {
+    li.remove();
+  }
+};
+
 if (form) {
   form.addEventListener("submit", handleSubmit);
+}
+if (deleteBtns) {
+  deleteBtns.forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", handleDeleteComment);
+  });
 }

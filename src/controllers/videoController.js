@@ -1,6 +1,6 @@
 import User from "../models/User";
 import Comment from "../models/Comment";
-import Video, { formatHashtags } from "../models/Video";
+import Video from "../models/Video";
 
 export const home = async (req, res) => {
   try {
@@ -45,11 +45,11 @@ export const postEdit = async (req, res) => {
   } = req.session;
   const { id } = req.params;
   const { title, description, hashtags } = req.body;
-  const video = await Video.exists({ _id: id });
+  const video = await Video.findById(id);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   }
-  if (String(video.owner) !== String(_id)) {
+  if (String(video.owner._id) !== String(_id)) {
     req.flash("error", "You are not the owner of the video");
     return res.status(403).redirect("/");
   }
@@ -149,4 +149,22 @@ export const createComment = async (req, res) => {
   video.comments.push(comment._id);
   await video.save();
   return res.status(201).json({ newCommentId: comment._id });
+};
+
+export const deleteComment = async (req, res) => {
+  const {
+    body: { videoId },
+    params: { id },
+    session: { user },
+  } = req;
+
+  const video = await Video.findById(videoId);
+  const comment = await Comment.findById(id).populate("video");
+  if (String(comment.owner) !== String(user._id)) {
+    return res.sendStatus(401);
+  }
+  video.comments.splice(video.comments.indexOf(id), 1);
+  await video.save();
+  await comment.remove();
+  return res.sendStatus(200);
 };
