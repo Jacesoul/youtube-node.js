@@ -391,3 +391,4 @@ JSON.parse('{"text":"I like it","rating":5}')
 => {text: 'I like it', rating: 5}
 - fetch로 body를 보낼때 express에게 string으로 보내고 있지만 헤더에 실제로 JSON타입으로 보내고 있다고 알려줘야한다.  
 - headers: { "Content-Type": "application/json" }
+- res.json을 통해서 서버에서 프런트로 정보를 보낼수 있다. 

@@ -24,7 +24,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 600000, // 10분후 세션만료
+      maxAge: 6000000, // 100분후 세션만료
     },
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }), // 이 부분의 코드가 없다면 세션은 서버메모리에 저장이된다.그러면 서버를 재시작 할때마다 메모리가 지워지게된다.
   })
