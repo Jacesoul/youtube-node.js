@@ -16,6 +16,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended: true })); // 해당 미들웨어를 통해 req.body가 생긴다.
+app.use(express.json()); // 프런트에서 받은 JSON string을 다시 javascript로 변환해준다.
 
 app.use(
   session({

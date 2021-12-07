@@ -109,6 +109,7 @@ export const finishGithubLogin = async (req, res) => {
     );
     if (!emailObj) {
       // set notification
+      req.flash("error", "invalid email address");
       return res.redirect("/login");
     }
     let user = await User.findOne({ email: emailObj.email });
@@ -132,8 +133,8 @@ export const finishGithubLogin = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  req.session.destroy();
   req.flash("info", "bye bye");
+  req.session.destroy();
   return res.redirect("/");
 };
 
