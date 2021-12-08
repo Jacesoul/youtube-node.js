@@ -417,4 +417,13 @@ JSON.parse('{"text":"I like it","rating":5}')
 - heroku는 오직 나의 git history만 본다. 만약 코드를 바꾸고 commit을 안하면 Heroku가 나의 코드를 볼수없다.
 - 오직 git이 볼수 있는 코드만 Heroku가 업로드한다. 
 - heroku logs --tail => 우리에게 서버를 보여준다. 
-- git push heroku master
+- git push heroku main
+- heroku는 dependency와 devDependency에 있는 모든걸 설치한다. 그 다음 npm build와 npm start를 자동으로 실행한다. 
+- DB연결을 위해 Mongo Atlas 로그인 
+- create cluster => 모두 무료로 체크하기 
+- username과 비밀번호 설정 / IP는 모두가 접근할수 있도록 0.0.0.0
+- [connect] 클릭후 Connect your application 클릭, mongodb로 시작하는 URL이 DB_URL이다. 
+- <password>대신 비밀번호 넣는다.
+- Heroku의 admin panel을 사용해서 DB_URL을 설정하기 
+- Heroku의 내 서버의 [Settings]에 가서 [Revial Config Vars]를 클릭한다.(변수를 추가할수 있다)
+- .env파일에 있는 변수들을 넣어준다. 
