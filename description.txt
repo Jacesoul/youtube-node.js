@@ -407,3 +407,14 @@ JSON.parse('{"text":"I like it","rating":5}')
 - webpack에는 development와 production 모드가 있다. production코드가 훨씬 더 작다. (압축되어있다)
 - webpack설정으로 scripts에서 command로 mode설정을 보낼수 있다. 
 - webpack watch모드는 development에서만 true로 해야한다.(watch를 command에 -w로 적용)
+- Heroku 계성생성 및 create new App
+- Heroku에 백엔드 서버를 업로드하는 두가지 방법이 있다. 하나는 Github, 다른 하나는 Heroku Git이다. 
+- Heroku Git으로 배포하기 위해서 Heroku CLI를 설치해야한다. 
+- brew tap heroku/brew && brew install heroku
+- zsh: command not found: heroku 에러가 떠서 sudo npm install -g heroku 명령어로 해결
+- heroku login -> 브라우저에서 로그인 
+- heroku git:remote -a youtube-nodejs
+- heroku는 오직 나의 git history만 본다. 만약 코드를 바꾸고 commit을 안하면 Heroku가 나의 코드를 볼수없다.
+- 오직 git이 볼수 있는 코드만 Heroku가 업로드한다. 
+- heroku logs --tail => 우리에게 서버를 보여준다. 
+- git push heroku master
