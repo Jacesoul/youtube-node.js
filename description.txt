@@ -430,3 +430,7 @@ JSON.parse('{"text":"I like it","rating":5}')
 - Web process failed to bind to $PORT within 60 seconds of launch => PORT에러 발생 
 - 현재 나의 서버가 포트 4000으로 열러있지만 대부분의 경우 포트 4000은 Heroku가 우리에게 준것이 아니다.
 - 대부분 Heroku는 우리에게 랜덤으로 Port를 준다. (변수를 통해서)
+- https://youtube-nodejs.herokuapp.com/
+- Github로그인을 시도했지만 Github에서 localhost:4000으로 되돌아가라고 했기 때문에 에러가 나온다. 
+- Github 세팅에서 Authorization callback URL를 변경해야한다.
+- 컴퓨터에서 테스트할때는 다시 바꿔줘야 하기 때문에 보통 앱을 2개만든다.(하나는 공식앱, 다른하나는 테스트용)
