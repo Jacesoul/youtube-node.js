@@ -438,3 +438,14 @@ JSON.parse('{"text":"I like it","rating":5}')
 - Github으로 배포하기위해서는 먼저 Github과 연결하기 
 - 나의 repository를 찾고 매번 내가 git push origin main을 할때마다 자동 배포 활성화하기
 - Github에 push하면 바로 Heroku에 배포가 되기 때문에 조심하기 
+- heroku에 다시 배포를 하면 uploads/video로 시작하는 파일들은 사라지게 된다. (새로운 서버생성시 삭제됨)
+- AWS S3 bucket 생성하기(모든 퍼플릭 액세스 차단)
+- 버킷생성후에는 API key를 만든다. 그래야 node.js코드가 AWS와 이야기할수 있다. 
+- IAM은 API Key를 만들수 있게 해준다. 
+- IAM에서 사용자 추가시 엑세스키에 체크
+- 다음 권한에서는 어떠한 권한이라도 줄수 있다. 관리자권한을 주게되면 이 API key를 가지고 내 계정으로 무엇이든 할수있다.
+- 기존 정책직접연결으로 가서 s3검색후 AmazonS3FullAccess를 체크해준다.(S3에서 할수있는 모든권한 주기)
+- 태그는 넘어가기 
+- 엑세스키 ID와 비밀엑세스키는 한번만 볼수 있기 때문에 .env에 넣어놓기 
+- Multer S3를 통해 웹사이트에 업로드 하는대신 AWS에 업로드한다. 
+- npm i multer-s3 aws-sdk
