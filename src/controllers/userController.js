@@ -159,7 +159,6 @@ export const postEdit = async (req, res) => {
     body: { name, email, username, location },
     file,
   } = req;
-  console.log(file);
   const existEmail = await User.findOne({ email });
   const existUsername = await User.findOne({ username });
   if (
@@ -172,10 +171,16 @@ export const postEdit = async (req, res) => {
     });
   }
 
+  const isHeroku = process.env.NODE_ENV === "production";
+  console.log(file);
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.location : avatarUrl,
+      avatarUrl: file
+        ? isHeroku
+          ? file.location
+          : "/" + file.path
+        : avatarUrl,
       name,
       email,
       username,

@@ -2,11 +2,11 @@ extends base.pug
 
 block content
   div#videoContainer(data-id=video._id)
-    video(src=video.fileUrl)
+    video(src=video.fileUrl, autoplay, muted)
     div#videoControls.videoControls
       div.videoControls__play
         span#play.videoControls__playBtn
-          i.fas.fa-play
+          i.fas.fa-pause
         div.videoControls__time
           span#currentTime 00:00
           span  / 
